@@ -1,33 +1,35 @@
 import SectionHeading from "./SectionHeading"
-import ProjectCard from "./ProjectCard"
+import ProjectCarousel from "./ProjectCarousel"
+import p1 from "../assets/Projects/p1.png"
+import p2 from "../assets/Projects/p2.png"
+import p3 from "../assets/Projects/p3.png"
 
 const Projects = () => {
   const projects = [
     {
-      title: "E-commerce Website",
+      title: "Bardali Creations",
       description:
-        "A fully responsive e-commerce platform with product filtering, cart functionality, and checkout process.",
-      image: "/placeholder.png?height=300&width=500",
-      tags: ["React", "Redux", "Tailwind CSS", "Stripe"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/yourusername/project",
+        "A creative agency website for Bardali Creations, showcasing their branding, digital marketing, and software development services.",
+      image: p1,
+      tags: ["React", "CSS", "Tailwind CSS"],
+      liveUrl: "https://bardali.com.np/",
+      status: "in-progress",
     },
     {
-      title: "Task Management App",
+      title: "Tic Tac Toe Game",
       description:
-        "A productivity application for managing tasks with drag-and-drop functionality and user authentication.",
-      image: "/placeholder.png?height=300&width=500",
-      tags: ["React", "Firebase", "CSS Modules"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/yourusername/project",
+        "A clean and responsive two-player Tic Tac Toe game with real-time win detection and smooth gameplay.",
+      image: p2,
+      tags: ["React", "Tailwind CSS"],
+      liveUrl: "https://sstictactoe.netlify.app/",
+      githubUrl: "https://github.com/Shirish-Shrestha/Tic-Tac-Toe",
     },
     {
-      title: "Weather Dashboard",
+      title: "Sky Scope",
       description: "A weather application that displays current and forecasted weather data for any location.",
-      image: "/placeholder.png?height=300&width=500",
-      tags: ["JavaScript", "API Integration", "CSS"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/yourusername/project",
+      image: p3,
+      tags: ["API Integration","React", "Tailwind CSS"],
+      githubUrl: "https://github.com/Shirish-Shrestha/SkyScope",
     },
     {
       title: "Portfolio Website",
@@ -42,8 +44,9 @@ const Projects = () => {
       description: "An application that allows users to search for recipes based on ingredients they have.",
       image: "/placeholder.png?height=300&width=500",
       tags: ["React", "API Integration", "Styled Components"],
-      liveUrl: "https://example.com",
+      liveUrl: null,
       githubUrl: "https://github.com/yourusername/project",
+      status: "in-progress",
     },
     {
       title: "Movie Database",
@@ -60,11 +63,7 @@ const Projects = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading title="My Projects" subtitle="A selection of my recent work and personal projects" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
-        </div>
+        <ProjectCarousel projects={projects} />
       </div>
     </div>
   )

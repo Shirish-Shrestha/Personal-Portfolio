@@ -45,7 +45,7 @@ const Navbar = ({ activeSection }) => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <a href="#home" className="text-xl font-bold text-gray-800 dark:text-white">
-            <span className="text-gray-700 dark:text-white">Shirish</span>
+            {/* <span className="text-gray-700 dark:text-white">Shirish</span> */}
             <span className="text-gray-500">Portfolio</span>
           </a>
 
@@ -57,7 +57,7 @@ const Navbar = ({ activeSection }) => {
                 href={link.href}
                 className={`text-sm font-medium transition-colors hover:text-gray-900 dark:hover:text-white ${
                   activeSection === link.href.substring(1)
-                    ? "text-gray-900 dark:text-white"
+                    ? "text-gray-700 dark:text-white"
                     : "text-gray-500 dark:text-gray-400"
                 }`}
               >
