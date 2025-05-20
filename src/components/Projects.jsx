@@ -3,6 +3,8 @@ import ProjectCarousel from "./ProjectCarousel"
 import p1 from "../assets/Projects/p1.png"
 import p2 from "../assets/Projects/p2.png"
 import p3 from "../assets/Projects/p3.png"
+import p4 from "../assets/Projects/p4.png"
+
 
 const Projects = () => {
   const projects = [
@@ -11,7 +13,7 @@ const Projects = () => {
       description:
         "A creative agency website for Bardali Creations, showcasing their branding, digital marketing, and software development services.",
       image: p1,
-      tags: ["React", "CSS", "Tailwind CSS"],
+      tags: ["React", "Tailwind CSS"],
       liveUrl: "https://bardali.com.np/",
       status: "in-progress",
     },
@@ -25,19 +27,19 @@ const Projects = () => {
       githubUrl: "https://github.com/Shirish-Shrestha/Tic-Tac-Toe",
     },
     {
+      title: "Netflix Clone",
+      description: "A personal portfolio website showcasing my projects and skills (this website).",
+      image: p4,
+      tags: ["HTML", "CSS"],
+      liveUrl: "ssnetclone.netlify.app",
+      githubUrl: "https://github.com/Shirish-Shrestha/Netflix-Clone",
+    },
+    {
       title: "Sky Scope",
       description: "A weather application that displays current and forecasted weather data for any location.",
       image: p3,
       tags: ["API Integration","React", "Tailwind CSS"],
       githubUrl: "https://github.com/Shirish-Shrestha/SkyScope",
-    },
-    {
-      title: "Portfolio Website",
-      description: "A personal portfolio website showcasing my projects and skills (this website).",
-      image: "/placeholder.png?height=300&width=500",
-      tags: ["React", "Vite", "Tailwind CSS"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/yourusername/project",
     },
     {
       title: "Recipe Finder",
