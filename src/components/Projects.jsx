@@ -28,10 +28,10 @@ const Projects = () => {
     },
     {
       title: "Netflix Clone",
-      description: "A personal portfolio website showcasing my projects and skills (this website).",
+      description: "A static front-end clone of Netflix built with only HTML and CSS. Created to practice layout design, visual hierarchy, and UI consistency.",
       image: p4,
       tags: ["HTML", "CSS"],
-      liveUrl: "ssnetclone.netlify.app",
+      liveUrl: "https://ssnetclone.netlify.app/",
       githubUrl: "https://github.com/Shirish-Shrestha/Netflix-Clone",
     },
     {
