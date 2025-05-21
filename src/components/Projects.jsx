@@ -4,6 +4,7 @@ import p1 from "../assets/Projects/p1.png"
 import p2 from "../assets/Projects/p2.png"
 import p3 from "../assets/Projects/p3.png"
 import p4 from "../assets/Projects/p4.png"
+import p5 from "../assets/Projects/p5.png"
 
 
 const Projects = () => {
@@ -13,7 +14,7 @@ const Projects = () => {
       description:
         "A creative agency website for Bardali Creations, showcasing their branding, digital marketing, and software development services.",
       image: p1,
-      tags: ["React", "Tailwind CSS"],
+      tags: ["React", "Tailwind CSS", "Fast API"],
       liveUrl: "https://bardali.com.np/",
       status: "in-progress",
     },
@@ -35,20 +36,19 @@ const Projects = () => {
       githubUrl: "https://github.com/Shirish-Shrestha/Netflix-Clone",
     },
     {
+      title: "Lubro Paints",
+      description: "Designed and developed a sleek, responsive website for Lubro Paints, a Nepal-based manufacturer and supplier of paints and coatings. The website provides detailed information about the company, its product categories, and services, while offering a modern and intuitive user experience.",
+      image: p5,
+      tags: ["React", "API Integration", "Tailwind CSS"],
+      liveUrl: null,
+      status: "in-progress",
+    },
+    {
       title: "Sky Scope",
       description: "A weather application that displays current and forecasted weather data for any location.",
       image: p3,
       tags: ["API Integration","React", "Tailwind CSS"],
       githubUrl: "https://github.com/Shirish-Shrestha/SkyScope",
-    },
-    {
-      title: "Recipe Finder",
-      description: "An application that allows users to search for recipes based on ingredients they have.",
-      image: "/placeholder.png?height=300&width=500",
-      tags: ["React", "API Integration", "Styled Components"],
-      liveUrl: null,
-      githubUrl: "https://github.com/yourusername/project",
-      status: "in-progress",
     },
     {
       title: "Movie Database",
