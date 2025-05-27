@@ -35,7 +35,7 @@ const Skills = () => {
           <h3 className="text-2xl font-semibold text-white mb-8 text-center neon-text-primary">
             Development Languages
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {frontendSkills.map((skill, index) => (
               <SkillCard key={index} skill={skill} />
             ))}
@@ -44,7 +44,7 @@ const Skills = () => {
 
         <div>
           <h3 className="text-2xl font-semibold text-white mb-8 text-center neon-text-secondary">Tools & Workflow</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {toolsSkills.map((skill, index) => (
               <SkillCard key={index} skill={skill} />
             ))}
