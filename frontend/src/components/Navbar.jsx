@@ -30,7 +30,7 @@ const Navbar = ({ activeSection }) => {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-gray-50/95 backdrop-blur-sm border-b border-gray-200" 
+          ? "bg-gray-100/50 backdrop-blur-sm border-b border-gray-200" 
           : "bg-transparent"
       }`}
     >
@@ -54,7 +54,7 @@ const Navbar = ({ activeSection }) => {
                 className={`text-sm font-normal transition-colors duration-200 relative ${
                   activeSection === link.href.substring(1)
                     ? "text-gray-900" 
-                    : "text-gray-600 hover:text-gray-900"
+                    : "text-gray-500 hover:text-gray-900"
                 }`}
               >
                 {link.name}
