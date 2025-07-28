@@ -9,29 +9,19 @@ const Navbar = ({ activeSection }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
+      setScrolled(window.scrollY > 20)
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
-
-  const closeMenu = () => {
-    setIsOpen(false)
-  }
+  const toggleMenu = () => setIsOpen(!isOpen)
+  const closeMenu = () => setIsOpen(false)
 
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
   ]
@@ -39,57 +29,66 @@ const Navbar = ({ activeSection }) => {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 dark:bg-gray-900/90 shadow-md backdrop-blur-sm" : "bg-transparent"
+        scrolled 
+          ? "bg-gray-50/95 backdrop-blur-sm border-b border-gray-200" 
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <a href="#home" className="text-xl font-bold text-gray-800 dark:text-white">
-            {/* <span className="text-gray-700 dark:text-white">Shirish</span> */}
-            <span className="text-gray-500">Portfolio</span>
+      <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+        <div className="flex justify-between items-center h-20">
+          
+          {/* Logo */}
+          <a 
+            href="#home" 
+            className="text-gray-900 font-medium text-lg tracking-tight hover:text-gray-600 transition-colors duration-200"
+          >
+            Shirish Shrestha
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-gray-900 dark:hover:text-white ${
+                className={`text-sm font-normal transition-colors duration-200 relative ${
                   activeSection === link.href.substring(1)
-                    ? "text-gray-700 dark:text-white"
-                    : "text-gray-500 dark:text-gray-400"
+                    ? "text-gray-900" 
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 {link.name}
+                {activeSection === link.href.substring(1) && (
+                  <span className="absolute -bottom-1 left-0 w-full h-px bg-gray-900"></span>
+                )}
               </a>
             ))}
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+            className="md:hidden text-gray-600 hover:text-gray-900 transition-colors duration-200"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg">
-          <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col space-y-4">
+        <div className="md:hidden bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-6 py-8 max-w-6xl">
+            <nav className="flex flex-col space-y-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-gray-900 dark:hover:text-white ${
+                  className={`text-lg font-normal transition-colors duration-200 ${
                     activeSection === link.href.substring(1)
-                      ? "text-gray-900 dark:text-white"
-                      : "text-gray-500 dark:text-gray-400"
+                      ? "text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
                   }`}
                   onClick={closeMenu}
                 >

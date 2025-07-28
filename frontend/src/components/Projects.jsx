@@ -1,27 +1,47 @@
-import SectionHeading from "./SectionHeading"
-import ProjectCarousel from "./ProjectCarousel"
+import { useState } from "react"
+import { ArrowRight, ChevronUp } from "lucide-react"
+import ProjectCard from "./ProjectCard"
 import p1 from "../assets/Projects/p1.png"
 import p2 from "../assets/Projects/p2.png"
 import p3 from "../assets/Projects/p3.png"
 import p4 from "../assets/Projects/p4.png"
 import p5 from "../assets/Projects/p5.png"
 
-
 const Projects = () => {
-  const projects = [
+  const [showAllProjects, setShowAllProjects] = useState(false)
+
+  // Featured projects - always visible
+  const featuredProjects = [
     {
       title: "Bardali Creations",
-      description:
-        "A creative agency website for Bardali Creations, showcasing their branding, digital marketing, and software development services.",
+      description: "Creative agency website showcasing branding and digital marketing services.",
       image: p1,
       tags: ["React", "Tailwind CSS", "Fast API"],
       liveUrl: "https://bardali.com.np/",
-      status: "in-progress",
+      featured: true
     },
     {
+      title: "Lubro Paints",
+      description: "Modern website for Nepal-based paint manufacturer with product showcase.",
+      image: p5,
+      tags: ["React", "API Integration", "Tailwind CSS"],
+      featured: true
+    },
+    {
+      title: "Sky Scope",
+      description: "Weather application with current and forecasted data for any location.",
+      image: p3,
+      tags: ["React", "API Integration", "Tailwind CSS"],
+      githubUrl: "https://github.com/Shirish-Shrestha/SkyScope",
+      featured: true
+    }
+  ]
+
+  // Additional projects - shown when "View More" is clicked
+  const additionalProjects = [
+    {
       title: "Tic Tac Toe Game",
-      description:
-        "A clean and responsive two-player Tic Tac Toe game with real-time win detection and smooth gameplay.",
+      description: "Clean, responsive two-player game with real-time win detection.",
       image: p2,
       tags: ["React", "Tailwind CSS"],
       liveUrl: "https://sstictactoe.netlify.app/",
@@ -29,43 +49,71 @@ const Projects = () => {
     },
     {
       title: "Netflix Clone",
-      description: "A static front-end clone of Netflix built with only HTML and CSS. Created to practice layout design, visual hierarchy, and UI consistency.",
+      description: "Static front-end clone of Netflix built with HTML and CSS for layout practice.",
       image: p4,
       tags: ["HTML", "CSS"],
       liveUrl: "https://ssnetclone.netlify.app/",
       githubUrl: "https://github.com/Shirish-Shrestha/Netflix-Clone",
     },
     {
-      title: "Lubro Paints",
-      description: "Designed and developed a sleek, responsive website for Lubro Paints, a Nepal-based manufacturer and supplier of paints and coatings. The website provides detailed information about the company, its product categories, and services, while offering a modern and intuitive user experience.",
-      image: p5,
-      tags: ["React", "API Integration", "Tailwind CSS"],
-      liveUrl: null,
-      status: "in-progress",
-    },
-    {
-      title: "Sky Scope",
-      description: "A weather application that displays current and forecasted weather data for any location.",
-      image: p3,
-      tags: ["API Integration","React", "Tailwind CSS"],
-      githubUrl: "https://github.com/Shirish-Shrestha/SkyScope",
-    },
-    {
       title: "Movie Database",
-      description: "A web application for browsing movies and TV shows with search and filtering capabilities.",
+      description: "Web application for browsing movies and TV shows with search capabilities.",
       image: "/placeholder.png?height=300&width=500",
       tags: ["React", "Context API", "CSS"],
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/yourusername/project",
-    },
+    }
   ]
 
   return (
-    <div className="py-20 min-h-screen pt-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading title="My Projects" subtitle="A selection of my recent work and personal projects" />
+    <div className="bg-gray-50 py-20">
+      <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+        
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-light text-gray-900 mb-4">Projects Work</h2>
+          <div className="w-12 h-0.5 bg-gray-400 mx-auto mb-6"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            A curated selection of projects that showcase my approach to solving problems through design and code.
+          </p>
+        </div>
 
-        <ProjectCarousel projects={projects} />
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+        </div>
+
+        {/* Additional Projects - shown when expanded */}
+        {showAllProjects && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 animate-fadeIn">
+            {additionalProjects.map((project, index) => (
+              <ProjectCard key={`additional-${index}`} project={project} keyPrefix="additional-" />
+            ))}
+          </div>
+        )}
+
+        {/* Toggle Button */}
+        <div className="text-center">
+          <button
+            onClick={() => setShowAllProjects(!showAllProjects)}
+            className="group inline-flex items-center text-gray-900 font-medium hover:text-gray-600 transition-colors duration-200"
+          >
+            {showAllProjects ? (
+              <>
+                Show Less
+                <ChevronUp size={16} className="ml-2 group-hover:-translate-y-1 transition-transform duration-200" />
+              </>
+            ) : (
+              <>
+                View More Projects
+                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+              </>
+            )}
+          </button>
+        </div>
+
       </div>
     </div>
   )

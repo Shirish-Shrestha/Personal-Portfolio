@@ -23,13 +23,35 @@ const ContactForm = () => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      setSubmitStatus({ type: "success", message: "Message sent successfully!" })
-      setFormData({ name: "", email: "", subject: "", message: "" })
+      // EmailJS implementation
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: 'service_3u0z4kt', // Replace with your EmailJS service ID
+          template_id: 'template_14ca3zn', // Replace with your EmailJS template ID
+          user_id: 'AxtUAzK1P9PT7Otqp', // Replace with your EmailJS public key
+          template_params: {
+            from_name: formData.name,
+            from_email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            to_email: 'shirishshrestha25@gmail.com'
+          }
+        })
+      })
+
+      if (response.ok) {
+        setSubmitStatus({ type: "success", message: "Message sent successfully! I'll get back to you soon." })
+        setFormData({ name: "", email: "", subject: "", message: "" })
+      } else {
+        throw new Error('Failed to send message')
+      }
     } catch (error) {
-      setSubmitStatus({ type: "error", message: "Failed to send message. Please try again." })
+      setSubmitStatus({ type: "error", message: "Failed to send message. Please try again or email me directly." })
     } finally {
       setIsSubmitting(false)
       // Clear status after 5 seconds
@@ -37,91 +59,86 @@ const ContactForm = () => {
     }
   }
 
+  const inputClasses = "w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none bg-transparent text-gray-900 placeholder-gray-500 transition-colors duration-200"
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-8">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-400 dark:text-gray-300 mb-1">
-          Name
-        </label>
         <input
           type="text"
           id="name"
           name="name"
           value={formData.name}
           onChange={handleChange}
+          placeholder="Your name"
           required
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+          className={inputClasses}
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-400 dark:text-gray-300 mb-1">
-          Email
-        </label>
         <input
           type="email"
           id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
+          placeholder="Email address"
           required
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+          className={inputClasses}
         />
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-400 dark:text-gray-300 mb-1">
-          Subject
-        </label>
         <input
           type="text"
           id="subject"
           name="subject"
           value={formData.subject}
           onChange={handleChange}
+          placeholder="Subject"
           required
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+          className={inputClasses}
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-400 dark:text-gray-300 mb-1">
-          Message
-        </label>
         <textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
+          placeholder="Your message"
           required
-          rows="5"
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+          rows="4"
+          className={`${inputClasses} resize-none`}
         ></textarea>
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full flex justify-center items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white font-medium rounded-md transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-      >
-        {isSubmitting ? (
-          "Sending..."
-        ) : (
-          <>
-            Send Message <Send size={18} className="ml-2" />
-          </>
-        )}
-      </button>
+      <div className="pt-4">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="group inline-flex items-center text-gray-900 font-medium hover:text-gray-600 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? (
+            "Sending..."
+          ) : (
+            <>
+              Send Message
+              <Send size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+            </>
+          )}
+        </button>
+      </div>
 
       {submitStatus && (
-        <div
-          className={`p-3 rounded-md ${
-            submitStatus.type === "success"
-              ? "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200"
-              : "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200"
-          }`}
-        >
-          {submitStatus.message}
+        <div className="pt-4">
+          <p className={`text-sm ${
+            submitStatus.type === "success" ? "text-green-600" : "text-red-600"
+          }`}>
+            {submitStatus.message}
+          </p>
         </div>
       )}
     </form>
