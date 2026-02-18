@@ -13,6 +13,16 @@ const Projects = () => {
   // Featured projects - always visible
   const featuredProjects = [
     {
+      title: "Paint Company",
+      description: "Modern website for Nepal-based paint manufacturer with product showcase.",
+      image: p5,
+      tags: ["React", "API Integration", "Tailwind CSS"],
+      githubUrl: "https://github.com/Shirish-Shrestha/Paint-House",
+      liveUrl: "liveUrl: https://bardali.com.np/",
+      featured: true
+    },
+
+    {
       title: "Bardali Creations",
       description: "Creative agency website showcasing branding and digital marketing services.",
       image: p1,
@@ -20,21 +30,17 @@ const Projects = () => {
       liveUrl: "https://bardali.com.np/",
       featured: true
     },
+
     {
-      title: "Lubro Paints",
-      description: "Modern website for Nepal-based paint manufacturer with product showcase.",
-      image: p5,
-      tags: ["React", "API Integration", "Tailwind CSS"],
+      title: "Netflix Clone",
+      description: "Static front-end clone of Netflix built with HTML and CSS for layout practice.",
+      image: p4,
+      tags: ["HTML", "CSS"],
+      liveUrl: "https://ssnetclone.netlify.app/",
+      githubUrl: "https://github.com/Shirish-Shrestha/Netflix-Clone",
       featured: true
     },
-    {
-      title: "Sky Scope",
-      description: "Weather application with current and forecasted data for any location.",
-      image: p3,
-      tags: ["React", "API Integration", "Tailwind CSS"],
-      githubUrl: "https://github.com/Shirish-Shrestha/SkyScope",
-      featured: true
-    }
+    
   ]
 
   // Additional projects - shown when "View More" is clicked
@@ -47,22 +53,15 @@ const Projects = () => {
       liveUrl: "https://sstictactoe.netlify.app/",
       githubUrl: "https://github.com/Shirish-Shrestha/Tic-Tac-Toe",
     },
+
     {
-      title: "Netflix Clone",
-      description: "Static front-end clone of Netflix built with HTML and CSS for layout practice.",
-      image: p4,
-      tags: ["HTML", "CSS"],
-      liveUrl: "https://ssnetclone.netlify.app/",
-      githubUrl: "https://github.com/Shirish-Shrestha/Netflix-Clone",
+      title: "Sky Scope",
+      description: "Weather application with current and forecasted data for any location.",
+      image: p3,
+      tags: ["React", "API Integration", "Tailwind CSS"],
+      githubUrl: "https://github.com/Shirish-Shrestha/SkyScope",
     },
-    {
-      title: "Movie Database",
-      description: "Web application for browsing movies and TV shows with search capabilities.",
-      image: "/placeholder.png?height=300&width=500",
-      tags: ["React", "Context API", "CSS"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/yourusername/project",
-    }
+
   ]
 
   return (
