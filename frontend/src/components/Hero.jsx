@@ -33,7 +33,7 @@ const Hero = () => {
                 <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
               </a>
               <a
-                href="/New_Resume.pdf"
+                href="/My_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 font-medium hover:text-gray-900 transition-colors duration-200 border-b border-gray-300 hover:border-gray-900"
