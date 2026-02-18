@@ -6,9 +6,9 @@ const About = () => {
   const sectionRef = useRef(null);
 
   const highlights = [
-    { number: 2, suffix: "+", label: "Years Experience" },
+    { number: 1, suffix: "+", label: "Years Experience" },
     { number: 10, suffix: "+", label: "Projects Built" },
-    { number: 100, suffix: "%", label: "Client Satisfaction" }
+    // { number: 100, suffix: "%", label: "Client Satisfaction" }
   ];
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const About = () => {
 
   const skills = [
     "React", "TypeScript", "Next.js", "Tailwind CSS", 
-    "JavaScript", "HTML/CSS", "Git", "Responsive Design"
+    "JavaScript", "HTML/CSS", "Git & Github", "Responsive Design"
   ];
 
   return (
